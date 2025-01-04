@@ -1,0 +1,63 @@
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand"></h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="ui-home"><a href="/"><%= __('Intro') %></a>
+                            </li>
+                            <li class="ui-history"><a href="/"><%= __('History') %></a>
+                            </li>
+                            <li class="ui-public active"><a href="/public"><%= __('公開筆記') %></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="history" class="section">
+                <br>
+                <h4 class="ui-nohistory" style="display:none;">
+                    <%= __('No history') %>
+                </h4>
+                <a href="#" class="btn btn-primary ui-import-from-browser" style="display:none;"><%= __('Import from browser') %></a>
+                <ul id="history-list" class="list">
+<% if (data.length > 0) { %>
+    <% data.forEach(note => { %>
+      <li class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <a href="http://10.16.30.7:3000/s/<%= note.shortid %>">
+          <div class="item">
+            <div class="ui-history-pin fa fa-thumb-tack fa-fw"></div>
+            <div class="content">
+              <h4 class="text"><%= note.title %></h4>
+            </div>
+          </div>
+        </a>
+      </li>
+    <% }); %>
+  <% } else { %>
+    <li class="col-xs-12">
+      <p>No public notes available.</p>
+    </li>
+  <% } %>
+                </ul>
+                <ul class="pagination"></ul>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>
+                        <%- __('Powered by %s', '<a href="https://github.com/hackmdio/codimd">CodiMD</a>') %> | <a href="<%- serverURL %>/s/release-notes" target="_blank" rel="noopener"><%= __('Releases') %></a> | <a href="<%- sourceURL %>" target="_blank" rel="noopener">
+                    </p>
+                    <h6 class="social-foot">
+                        <%- __('Follow us on %s and %s.', '<a href="https://github.com/hackmdio/CodiMD" target="_blank" rel="noopener"><i class="fa fa-github"></i> GitHub</a>, <a href="https://gitter.im/hackmdio/hackmd" target="_blank" rel="noopener"><i class="fa fa-comments"></i> Gitter</a>', '<a href="https://poeditor.com/join/project/q0nuPWyztp" target="_blank" rel="noopener"><i class="fa fa-globe"></i> POEditor</a>') %>
+                    </h6>
+                    <% if(privacyPolicyURL && privacyPolicyURL.length > 0) { %><p><a href="<%- privacyPolicyURL %>"><%= __('Privacy Policy') %></a></p><% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
