@@ -5,4 +5,5 @@ mv public.js ~/app/lib/public/index.js
 
 mkdir ~/app/public/views/public
 mv public.ejs ~/app/public/views/public.ejs
-mv -r ./public ~/app/public/views/public/
+mv ./public ~/app/public/views/
+mv body.ejs ~/app/public/views/index/body.ejs
